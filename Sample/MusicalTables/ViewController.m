@@ -15,7 +15,8 @@
 @synthesize tableView = _tableView;
 @synthesize tableData = _tableData;
 
-@synthesize tableElements = _tableElements;
+@synthesize tableSections = _tableSections;
+@synthesize tableRows = _tableRows;
 
 
 - (void)didReceiveMemoryWarning
@@ -30,20 +31,21 @@
 {
     [super viewDidLoad];
 	
-    _tableElements = [[NSArray alloc] initWithObjects:
-                          @"Hello", @"World", //0
-                          @"All", @"Your", @"Base", @"Are",  @"Belong", @"To", @"Us", //2
-                          @"Then", @"Who", @"Was", @"Telephone", nil]; //9
+    _tableRows = [[NSArray alloc] initWithObjects:
+                        @"Hello", @"World", //0
+                        @"All", @"Your", @"Base", @"Are",  @"Belong", @"To", @"Us", //2
+                        @"Y", @"U", @"NO", //9
+                        @"Then", @"Who", @"Was", @"Telephone", nil]; //12
     
+    _tableSections = [[NSArray alloc] initWithObjects:
+                        [NSMutableArray arrayWithObjects: [self.tableRows objectAtIndex:0], [self.tableRows objectAtIndex:1], nil],
+                        [NSMutableArray arrayWithObjects: [self.tableRows objectAtIndex:2], [self.tableRows objectAtIndex:3], [self.tableRows objectAtIndex:4], [self.tableRows objectAtIndex:5], [self.tableRows objectAtIndex:6], [self.tableRows objectAtIndex:7], [self.tableRows objectAtIndex:8], nil],
+                        [NSMutableArray arrayWithObjects: [self.tableRows objectAtIndex:9], [self.tableRows objectAtIndex:10], [self.tableRows objectAtIndex:11], nil],
+                        [NSMutableArray arrayWithObjects: [self.tableRows objectAtIndex:12], [self.tableRows objectAtIndex:13], [self.tableRows objectAtIndex:14], [self.tableRows objectAtIndex:15], nil],
+                        nil];
     
     _tableData = [[NSMutableArray alloc] initWithObjects:
-                  [self.tableElements objectAtIndex:0],
-                  [self.tableElements objectAtIndex:2],
-                  [self.tableElements objectAtIndex:4],
-                  [self.tableElements objectAtIndex:6],
-                  [self.tableElements objectAtIndex:8],
-                  [self.tableElements objectAtIndex:10],
-                  [self.tableElements objectAtIndex:12],
+                  [self.tableSections objectAtIndex:0],
                   nil
                   ];
 
@@ -56,7 +58,8 @@
     self.tableView = nil;
     self.tableData = nil;
     
-    self.tableElements = nil;
+    self.tableSections = nil;
+    self.tableRows = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -76,51 +79,34 @@
     NSMutableArray *newTableElements;
     
     switch (test++) {
-        case 1:
-            newTableElements = [[NSMutableArray alloc] initWithObjects:
-                                  [self.tableElements objectAtIndex:0],
-                                  [self.tableElements objectAtIndex:2],
-                                  [self.tableElements objectAtIndex:4],
-                                  [self.tableElements objectAtIndex:6],
-                                  [self.tableElements objectAtIndex:8],
-                                  [self.tableElements objectAtIndex:10],
-                                  [self.tableElements objectAtIndex:12],
-                                  nil
-                                  ];
+        case 0:
+            newTableElements = [NSMutableArray arrayWithObjects:
+                                [self.tableSections objectAtIndex:0],
+                                [self.tableSections objectAtIndex:1],
+                                [self.tableSections objectAtIndex:2],
+                                nil];
 
             break;
-        case 2:
+        case 1:
             newTableElements = [NSMutableArray arrayWithObjects:
-                                [self.tableElements objectAtIndex:0],
-                                [self.tableElements objectAtIndex:1], //insert 1 (1)
-                                [self.tableElements objectAtIndex:2],
-                                [self.tableElements objectAtIndex:3], //insert 3 (3)
-                                [self.tableElements objectAtIndex:4],
-                                [self.tableElements objectAtIndex:5], //insert 5 (5)
-                                [self.tableElements objectAtIndex:7], //delete 6 (3), insert 7 (6)
-                                [self.tableElements objectAtIndex:9], //delete 8 (4), insert 9 (7)
-                                [self.tableElements objectAtIndex:11], //delete 10 (5), insert 11 (8)
-                                [self.tableElements objectAtIndex:12],
-                                nil
-                                ];
+                                [self.tableSections objectAtIndex:1],
+                                [self.tableSections objectAtIndex:3],
+                                nil];
             break;
         case 3:
             newTableElements = [NSMutableArray arrayWithObjects:
-                                [self.tableElements objectAtIndex:1], 
-                                [self.tableElements objectAtIndex:3],
-                                [self.tableElements objectAtIndex:5],
-                                [self.tableElements objectAtIndex:7],
-                                [self.tableElements objectAtIndex:9],
-                                [self.tableElements objectAtIndex:11],
-                                nil
-                                ];
+                                [self.tableSections objectAtIndex:1],
+                                [self.tableSections objectAtIndex:0],
+                                [self.tableSections objectAtIndex:3],
+                                nil];
             break;
         case 4:
             newTableElements = [NSMutableArray arrayWithObjects:
-                                [self.tableElements objectAtIndex:1],
-                                [self.tableElements objectAtIndex:11],
-                                nil
-                                ];
+                                [self.tableSections objectAtIndex:1],
+                                [self.tableSections objectAtIndex:4],
+                                [self.tableSections objectAtIndex:0],
+                                [self.tableSections objectAtIndex:3],
+                                nil];
             break;
         default:
             newTableElements = [NSMutableArray array];
@@ -137,13 +123,11 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    //return self.tableData.count;
-    return 1;
+    return self.tableData.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    //return [(NSArray *)[self.tableData objectAtIndex:section] count];
-    return self.tableData.count;
+    return [(NSArray *)[self.tableData objectAtIndex:section] count];
 }
 
 
@@ -156,8 +140,7 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
     }
     
-    //cell.textLabel.text = [(NSArray *)[self.tableData objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    cell.textLabel.text = [self.tableData objectAtIndex:indexPath.row];
+    cell.textLabel.text = [(NSArray *)[self.tableData objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     
     return cell;
 }
