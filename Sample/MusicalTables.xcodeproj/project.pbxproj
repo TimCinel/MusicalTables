@@ -1,0 +1,289 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		22501C9114724A6100340441 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22501C9014724A6100340441 /* UIKit.framework */; };
+		22501C9314724A6100340441 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22501C9214724A6100340441 /* Foundation.framework */; };
+		22501C9514724A6100340441 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22501C9414724A6100340441 /* CoreGraphics.framework */; };
+		22501C9B14724A6100340441 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22501C9914724A6100340441 /* InfoPlist.strings */; };
+		22501C9D14724A6100340441 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 22501C9C14724A6100340441 /* main.m */; };
+		22501CA114724A6100340441 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 22501CA014724A6100340441 /* AppDelegate.m */; };
+		22501CA414724A6100340441 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22501CA314724A6100340441 /* ViewController.m */; };
+		22501CAA14724A6100340441 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22501CA814724A6100340441 /* ViewController.xib */; };
+		22501CB91472551E00340441 /* MusicalTables.m in Sources */ = {isa = PBXBuildFile; fileRef = 22501CB81472551E00340441 /* MusicalTables.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		22501C8C14724A6100340441 /* MusicalTables.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicalTables.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		22501C9014724A6100340441 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		22501C9214724A6100340441 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		22501C9414724A6100340441 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		22501C9814724A6100340441 /* MusicalTables-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MusicalTables-Info.plist"; sourceTree = "<group>"; };
+		22501C9A14724A6100340441 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		22501C9C14724A6100340441 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		22501C9E14724A6100340441 /* MusicalTables-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MusicalTables-Prefix.pch"; sourceTree = "<group>"; };
+		22501C9F14724A6100340441 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		22501CA014724A6100340441 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		22501CA214724A6100340441 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		22501CA314724A6100340441 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		22501CA914724A6100340441 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		22501CB71472551E00340441 /* MusicalTables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MusicalTables.h; path = ../MusicalTables.h; sourceTree = "<group>"; };
+		22501CB81472551E00340441 /* MusicalTables.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MusicalTables.m; path = ../MusicalTables.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		22501C8914724A6100340441 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22501C9114724A6100340441 /* UIKit.framework in Frameworks */,
+				22501C9314724A6100340441 /* Foundation.framework in Frameworks */,
+				22501C9514724A6100340441 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		22501C8114724A6000340441 = {
+			isa = PBXGroup;
+			children = (
+				22501CB71472551E00340441 /* MusicalTables.h */,
+				22501CB81472551E00340441 /* MusicalTables.m */,
+				22501C9614724A6100340441 /* Sample */,
+				22501C8F14724A6100340441 /* Frameworks */,
+				22501C8D14724A6100340441 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		22501C8D14724A6100340441 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				22501C8C14724A6100340441 /* MusicalTables.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		22501C8F14724A6100340441 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				22501C9014724A6100340441 /* UIKit.framework */,
+				22501C9214724A6100340441 /* Foundation.framework */,
+				22501C9414724A6100340441 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		22501C9614724A6100340441 /* Sample */ = {
+			isa = PBXGroup;
+			children = (
+				22501C9F14724A6100340441 /* AppDelegate.h */,
+				22501CA014724A6100340441 /* AppDelegate.m */,
+				22501CA214724A6100340441 /* ViewController.h */,
+				22501CA314724A6100340441 /* ViewController.m */,
+				22501CA814724A6100340441 /* ViewController.xib */,
+				22501C9714724A6100340441 /* Supporting Files */,
+			);
+			name = Sample;
+			path = MusicalTables;
+			sourceTree = "<group>";
+		};
+		22501C9714724A6100340441 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				22501C9814724A6100340441 /* MusicalTables-Info.plist */,
+				22501C9914724A6100340441 /* InfoPlist.strings */,
+				22501C9C14724A6100340441 /* main.m */,
+				22501C9E14724A6100340441 /* MusicalTables-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		22501C8B14724A6100340441 /* MusicalTables */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22501CAD14724A6100340441 /* Build configuration list for PBXNativeTarget "MusicalTables" */;
+			buildPhases = (
+				22501C8814724A6100340441 /* Sources */,
+				22501C8914724A6100340441 /* Frameworks */,
+				22501C8A14724A6100340441 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MusicalTables;
+			productName = MusicalTables;
+			productReference = 22501C8C14724A6100340441 /* MusicalTables.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		22501C8314724A6000340441 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = 22501C8614724A6000340441 /* Build configuration list for PBXProject "MusicalTables" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 22501C8114724A6000340441;
+			productRefGroup = 22501C8D14724A6100340441 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				22501C8B14724A6100340441 /* MusicalTables */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		22501C8A14724A6100340441 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22501C9B14724A6100340441 /* InfoPlist.strings in Resources */,
+				22501CAA14724A6100340441 /* ViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		22501C8814724A6100340441 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22501C9D14724A6100340441 /* main.m in Sources */,
+				22501CA114724A6100340441 /* AppDelegate.m in Sources */,
+				22501CA414724A6100340441 /* ViewController.m in Sources */,
+				22501CB91472551E00340441 /* MusicalTables.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		22501C9914724A6100340441 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				22501C9A14724A6100340441 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		22501CA814724A6100340441 /* ViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				22501CA914724A6100340441 /* en */,
+			);
+			name = ViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		22501CAB14724A6100340441 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		22501CAC14724A6100340441 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		22501CAE14724A6100340441 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MusicalTables/MusicalTables-Prefix.pch";
+				INFOPLIST_FILE = "MusicalTables/MusicalTables-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		22501CAF14724A6100340441 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MusicalTables/MusicalTables-Prefix.pch";
+				INFOPLIST_FILE = "MusicalTables/MusicalTables-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		22501C8614724A6000340441 /* Build configuration list for PBXProject "MusicalTables" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22501CAB14724A6100340441 /* Debug */,
+				22501CAC14724A6100340441 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		22501CAD14724A6100340441 /* Build configuration list for PBXNativeTarget "MusicalTables" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22501CAE14724A6100340441 /* Debug */,
+				22501CAF14724A6100340441 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 22501C8314724A6000340441 /* Project object */;
+}
