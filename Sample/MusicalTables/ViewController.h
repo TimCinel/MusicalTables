@@ -13,7 +13,7 @@
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) NSMutableArray *tableData;
 
-@property (nonatomic, retain) NSArray *tableSections;
+@property (nonatomic, retain) NSMutableArray *tableSections;
 @property (nonatomic, retain) NSArray *tableRows;
 
 - (IBAction)runNextTest:(id)sender;

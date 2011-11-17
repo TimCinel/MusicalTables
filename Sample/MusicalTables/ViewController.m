@@ -9,6 +9,7 @@
 #import "ViewController.h"
 
 #import "MusicalTables.h"
+#import "MusicalTablesSection.h"
 
 @implementation ViewController
 
@@ -37,17 +38,14 @@
                         @"Y", @"U", @"NO", //9
                         @"Then", @"Who", @"Was", @"Telephone", nil]; //12
     
-    _tableSections = [[NSArray alloc] initWithObjects:
-                        [NSMutableArray arrayWithObjects: [self.tableRows objectAtIndex:0], [self.tableRows objectAtIndex:1], nil],
-                        [NSMutableArray arrayWithObjects: [self.tableRows objectAtIndex:2], [self.tableRows objectAtIndex:3], [self.tableRows objectAtIndex:4], [self.tableRows objectAtIndex:5], [self.tableRows objectAtIndex:6], [self.tableRows objectAtIndex:7], [self.tableRows objectAtIndex:8], nil],
-                        [NSMutableArray arrayWithObjects: [self.tableRows objectAtIndex:9], [self.tableRows objectAtIndex:10], [self.tableRows objectAtIndex:11], nil],
-                        [NSMutableArray arrayWithObjects: [self.tableRows objectAtIndex:12], [self.tableRows objectAtIndex:13], [self.tableRows objectAtIndex:14], [self.tableRows objectAtIndex:15], nil],
+    _tableSections = [[NSMutableArray alloc] initWithObjects:
+                        [MusicalTablesSection musicalTablesSectionWithIdentifier:@"HW" rows:[NSMutableArray arrayWithObjects: [self.tableRows objectAtIndex:0], [self.tableRows objectAtIndex:1], nil]], 
+                        [MusicalTablesSection musicalTablesSectionWithIdentifier:@"AYB" rows:[NSMutableArray arrayWithObjects: [self.tableRows objectAtIndex:2], [self.tableRows objectAtIndex:3], [self.tableRows objectAtIndex:4], [self.tableRows objectAtIndex:5], [self.tableRows objectAtIndex:6], [self.tableRows objectAtIndex:7], [self.tableRows objectAtIndex:8], nil]],
+                        [MusicalTablesSection musicalTablesSectionWithIdentifier:@"YUNO" rows:[NSMutableArray arrayWithObjects: [self.tableRows objectAtIndex:9], [self.tableRows objectAtIndex:10], [self.tableRows objectAtIndex:11], nil]],
+                        [MusicalTablesSection musicalTablesSectionWithIdentifier:@"THW" rows:[NSMutableArray arrayWithObjects: [self.tableRows objectAtIndex:12], [self.tableRows objectAtIndex:13], [self.tableRows objectAtIndex:14], [self.tableRows objectAtIndex:15], nil]],
                         nil];
     
-    _tableData = [[NSMutableArray alloc] initWithObjects:
-                  [self.tableSections objectAtIndex:0],
-                  nil
-                  ];
+    _tableData = [[NSMutableArray alloc] init];
 
 }
 
@@ -75,10 +73,10 @@
 #pragma mark - IBActions
 
 - (IBAction)runNextTest:(id)sender {
-    static NSInteger test = 0;
-    NSMutableArray *newTableElements;
+    static NSInteger test = -1;
+    NSMutableArray *newTableElements, *tempArray;
     
-    switch (test++) {
+    switch ((test = (test + 1) % 5)) {
         case 0:
             newTableElements = [NSMutableArray arrayWithObjects:
                                 [self.tableSections objectAtIndex:0],
@@ -87,23 +85,41 @@
                                 nil];
 
             break;
-        case 1:
+        case 1:            
             newTableElements = [NSMutableArray arrayWithObjects:
                                 [self.tableSections objectAtIndex:1],
                                 [self.tableSections objectAtIndex:3],
                                 nil];
             break;
-        case 3:
+        case 2:
+            tempArray = [(MusicalTablesSection *)[self.tableSections objectAtIndex:1] copy];
+            [tempArray insertObject:@"lolWAT" atIndex:0];
+            [tempArray insertObject:@"huh?!" atIndex:2];
+            [tempArray removeLastObject];
+            [tempArray removeLastObject];
+            [tempArray removeLastObject];
+            
+            [self.tableSections replaceObjectAtIndex:1 withObject:tempArray];
+            
             newTableElements = [NSMutableArray arrayWithObjects:
                                 [self.tableSections objectAtIndex:1],
                                 [self.tableSections objectAtIndex:0],
                                 [self.tableSections objectAtIndex:3],
                                 nil];
             break;
-        case 4:
+        case 3:
+            tempArray = [(MusicalTablesSection *)[self.tableSections objectAtIndex:1] copy];
+            [tempArray removeObjectAtIndex:2];
+            [tempArray removeObjectAtIndex:0];
+            [tempArray addObject:[self.tableRows objectAtIndex:6]];
+            [tempArray addObject:[self.tableRows objectAtIndex:7]];
+            [tempArray addObject:[self.tableRows objectAtIndex:8]];
+            
+            [self.tableSections replaceObjectAtIndex:1 withObject:tempArray];
+            
             newTableElements = [NSMutableArray arrayWithObjects:
                                 [self.tableSections objectAtIndex:1],
-                                [self.tableSections objectAtIndex:4],
+                                [self.tableSections objectAtIndex:2],
                                 [self.tableSections objectAtIndex:0],
                                 [self.tableSections objectAtIndex:3],
                                 nil];
@@ -114,11 +130,19 @@
     }
     
     [self.tableView beginUpdates];
+    NSLog(@"newTableElements: %@", self.tableData);
+    NSLog(@"oldTableElements: %@", newTableElements);
+    
     [MusicalTables musicalTables:self.tableView oldContent:self.tableData newContent:newTableElements];
     self.tableData = newTableElements;
     [self.tableView endUpdates];
     
 }
+
+
+
+
+
 
 #pragma mark - UITableViewDataSource
 

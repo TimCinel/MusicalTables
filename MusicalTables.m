@@ -3,10 +3,12 @@
 //  MusicalTables
 //
 //  Created by Tim Cinel on 2011-11-15.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2011 Tim Cinel. All rights reserved.
 //
+// 
 
 #import "MusicalTables.h"
+#import "MusicalTablesSection.h"
 
 @implementation MusicalTables
 
@@ -35,13 +37,13 @@
         [sectionsToDelete addIndex:[section intValue]];
     
     //make changes to table's sections
-    [table deleteSections:sectionsToInsert withRowAnimation:UITableViewRowAnimationAutomatic];
-    [table insertSections:sectionsToDelete withRowAnimation:UITableViewRowAnimationAutomatic];
+    [table deleteSections:sectionsToDelete withRowAnimation:UITableViewRowAnimationAutomatic];
+    [table insertSections:sectionsToInsert withRowAnimation:UITableViewRowAnimationAutomatic];
     
-    NSLog(@"\n\nSECTIONS\nDeleted:\n%@\nInserted:\n%@", sectionsToDelete, sectionsToInsert);
+    
     
     //ROWS
-    /*
+    
     //for each section that wasn't deleted and isn't new
     for (NSArray *rowPair in common) {        
         NSInteger oldSection, newSection;
@@ -69,13 +71,12 @@
     [table deleteRowsAtIndexPaths:rowsToDelete withRowAnimation:UITableViewRowAnimationAutomatic];
     [table insertRowsAtIndexPaths:rowsToInsert withRowAnimation:UITableViewRowAnimationAutomatic];
     
-    NSLog(@"\n\nROWS\nDeleted:\n%@\nInserted:\n%@", rowsToDelete, rowsToInsert);
-    */
     //that's all, folks!
 }
 
+
 + (void)differenceBetweenOldArray:(NSArray *)oldArray andNewArray:(NSArray *)newArray resultingInsertions:(NSArray **)insertionsPtr resultingDeletions:(NSArray **)deletionsPtr resultingCommon:(NSArray **)commonPtr {
-    NSInteger oldPos, oldCount, newPos, newCount, i;
+    NSInteger oldPos, oldCount, newPos, newCount;
     NSObject *oldItem, *newItem, *nextOldItem;
     
     NSMutableArray *deletions, *insertions, *common;
@@ -91,13 +92,10 @@
     for (;;) {        
         oldItem = (oldPos < oldCount ? [oldArray objectAtIndex:oldPos] : nil);
         newItem = (newPos < newCount ? [newArray objectAtIndex:newPos] : nil);
-        nextOldItem = nil;
-        
         
         if (nil == oldItem && nil == newItem) {
             //we're done here
             break;
-            
         } else if (nil == oldItem) {
             //we've exhausted all old items - just insert, insert, insert
             [insertions addObject:[NSNumber numberWithInt:newPos++]];
@@ -106,8 +104,8 @@
             //we've exhausted all new items - just delete, delete, delete
             [deletions addObject:[NSNumber numberWithInt:oldPos++]];
             
-        } else if (oldItem == newItem) {
-            //this section has been kept - keep a record so we can sort out the rows
+        } else if ([oldItem isEqual:newItem]) {
+            //keep this section - need to play musical tables with the rows
             
             [common addObject:[NSArray arrayWithObjects:
                                [NSNumber numberWithInt:oldPos++],
@@ -116,17 +114,20 @@
             
         } else {
             //check if the new item matches any proceeding old items
+            nextOldItem = nil;
+            NSInteger i;
             
             for (i = oldPos + 1; i < oldCount && nil == nextOldItem; i++)
-                if ([oldArray objectAtIndex:i] == newItem) {
+                if ([[oldArray objectAtIndex:i] isEqual:newItem]) {
                     nextOldItem = [oldArray objectAtIndex:i];
                     break;
                 }
             
             if (nil != nextOldItem) {
                 //one of the old items matched - delete old items from oldPos to i - 1
-                for (NSInteger j = oldPos; j < i; j++)
+                for (NSInteger j = oldPos; j < i; j++) {
                     [deletions addObject:[NSNumber numberWithInt:j]];
+                }
                 
                 //move to old pos after matching old pos, move to next new pos
                 oldPos = i + 1;
@@ -134,14 +135,12 @@
                 
             } else {
                 //no old items matched - add new item
-                [insertions addObject:[NSNumber numberWithInt:newPos]];
-                newPos++;
-                
+                [insertions addObject:[NSNumber numberWithInt:newPos++]];
             }
+            
         }
-        NSLog(@"LOOP!");
-    }
-    
+        
+    }    
     //return arrays
     
     if (nil != insertionsPtr)

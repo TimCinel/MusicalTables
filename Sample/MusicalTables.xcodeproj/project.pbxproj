@@ -16,6 +16,7 @@
 		22501CA414724A6100340441 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22501CA314724A6100340441 /* ViewController.m */; };
 		22501CAA14724A6100340441 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22501CA814724A6100340441 /* ViewController.xib */; };
 		22501CB91472551E00340441 /* MusicalTables.m in Sources */ = {isa = PBXBuildFile; fileRef = 22501CB81472551E00340441 /* MusicalTables.m */; };
+		22501CC3147485BB00340441 /* MusicalTablesSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 22501CC2147485BB00340441 /* MusicalTablesSection.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,8 @@
 		22501CA914724A6100340441 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 		22501CB71472551E00340441 /* MusicalTables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MusicalTables.h; path = ../MusicalTables.h; sourceTree = "<group>"; };
 		22501CB81472551E00340441 /* MusicalTables.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MusicalTables.m; path = ../MusicalTables.m; sourceTree = "<group>"; };
+		22501CC1147485BB00340441 /* MusicalTablesSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MusicalTablesSection.h; path = ../MusicalTablesSection.h; sourceTree = "<group>"; };
+		22501CC2147485BB00340441 /* MusicalTablesSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MusicalTablesSection.m; path = ../MusicalTablesSection.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +58,8 @@
 			children = (
 				22501CB71472551E00340441 /* MusicalTables.h */,
 				22501CB81472551E00340441 /* MusicalTables.m */,
+				22501CC1147485BB00340441 /* MusicalTablesSection.h */,
+				22501CC2147485BB00340441 /* MusicalTablesSection.m */,
 				22501C9614724A6100340441 /* Sample */,
 				22501C8F14724A6100340441 /* Frameworks */,
 				22501C8D14724A6100340441 /* Products */,
@@ -170,6 +175,7 @@
 				22501CA114724A6100340441 /* AppDelegate.m in Sources */,
 				22501CA414724A6100340441 /* ViewController.m in Sources */,
 				22501CB91472551E00340441 /* MusicalTables.m in Sources */,
+				22501CC3147485BB00340441 /* MusicalTablesSection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
