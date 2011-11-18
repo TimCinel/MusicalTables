@@ -10,7 +10,36 @@
 #import "MusicalTables.h"
 #import "MusicalTablesSection.h"
 
+@interface MusicalTables()
+
++ (void)differenceBetweenOldArray:(NSArray *)oldArray andNewArray:(NSArray *)newArray resultingInsertions:(NSArray **)insertionsPtrOrNil resultingDeletions:(NSArray **)deletionsPtrOrNil resultingCommon:(NSArray **)commonPtrOrNil;
+
+@end
+
 @implementation MusicalTables
+
+/* musicalTables:table oldContent:oldContent newContent:newContent
+ * 
+ * Takes the existing data source for your table (oldContent), the new data source
+ * (newContent) and the table (table). The method compares oldContent and newContent,
+ * determines the differences, and performs deleteSections/insertSections 
+ * insertRows/deleteRows on the table accordingly.
+ *
+ * There is a prescribed schema for oldData and newData:
+ *      NSArray *(old|new)Content:
+ *          (
+ *              MusicalTableSection *(id row, id row, id row, id row, id row),
+ *              MusicalTableSection *(id row, id row),
+ *              MusicalTableSection *(id row, id row, id row, id row),
+ *          );
+ *
+ *      Sections don't have to be stored as MusicalTableSelection objects. The class
+ *      used to store sections should: 
+ *       * Allow "tagging" so equivalent sections can be detected
+ *       * Have an NSArray or other storage mechanism to store rows
+ *       * Implement objectAtIndex: and count: like NSArray, so rows can be retrieved.
+ * 
+ */
 
 + (void)musicalTables:(UITableView *)table oldContent:(NSArray *)oldContent newContent:(NSArray *)newContent {
     NSMutableArray *insertions, *deletions, *common, *rowsToInsert, *rowsToDelete;
@@ -37,8 +66,8 @@
         [sectionsToDelete addIndex:[section intValue]];
     
     //make changes to table's sections
-    [table deleteSections:sectionsToDelete withRowAnimation:UITableViewRowAnimationAutomatic];
     [table insertSections:sectionsToInsert withRowAnimation:UITableViewRowAnimationAutomatic];
+    [table deleteSections:sectionsToDelete withRowAnimation:UITableViewRowAnimationAutomatic];
     
     
     
@@ -68,14 +97,23 @@
     }
     
     //make changes to table's rows
-    [table deleteRowsAtIndexPaths:rowsToDelete withRowAnimation:UITableViewRowAnimationAutomatic];
     [table insertRowsAtIndexPaths:rowsToInsert withRowAnimation:UITableViewRowAnimationAutomatic];
+    [table deleteRowsAtIndexPaths:rowsToDelete withRowAnimation:UITableViewRowAnimationAutomatic];
     
     //that's all, folks!
 }
 
+/*  differenceBetweenOldArray:oldArray andNewArray:newArray resultingInsertions:insertionsPtrOrNil resultingDeletions:deletionsPtrOrNil resultingCommon:commonPtrOrNil
+ *  
+ *  Takes an old array (oldArray) and new array (newArray), analyses the differences 
+ *  between the two, and sets pointers to arrays containing insertions (insertionPtrOrNil) 
+ *  and deletions (deletionPtrOrNil) required to transition from the old array to the new
+ *  array. An array of elements from the old array that aren't deleted is also maintained 
+ *  (commonPtrOrNil).
+ *
+ */
 
-+ (void)differenceBetweenOldArray:(NSArray *)oldArray andNewArray:(NSArray *)newArray resultingInsertions:(NSArray **)insertionsPtr resultingDeletions:(NSArray **)deletionsPtr resultingCommon:(NSArray **)commonPtr {
++ (void)differenceBetweenOldArray:(NSArray *)oldArray andNewArray:(NSArray *)newArray resultingInsertions:(NSArray **)insertionsPtrOrNil resultingDeletions:(NSArray **)deletionsPtrOrNil resultingCommon:(NSArray **)commonPtrOrNil {
     NSInteger oldPos, oldCount, newPos, newCount;
     NSObject *oldItem, *newItem, *nextOldItem;
     
@@ -143,14 +181,14 @@
     }    
     //return arrays
     
-    if (nil != insertionsPtr)
-        *insertionsPtr = insertions;
+    if (nil != insertionsPtrOrNil)
+        *insertionsPtrOrNil = insertions;
     
-    if (nil != deletionsPtr)
-        *deletionsPtr = deletions;
+    if (nil != deletionsPtrOrNil)
+        *deletionsPtrOrNil = deletions;
     
-    if (nil != commonPtr)
-        *commonPtr = common;
+    if (nil != commonPtrOrNil)
+        *commonPtrOrNil = common;
 }
 
 @end
